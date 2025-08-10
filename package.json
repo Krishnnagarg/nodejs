@@ -1,0 +1,16 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "world best node and express series by thapa",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "krishna garg",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.5.0",
+    "express": "^5.1.0"
+  }
+}
