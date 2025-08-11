@@ -23,18 +23,17 @@ const handleInput = (option) => {
     });
   } else if (option === "2") {
     console.log("\n Your Todo Lists");
-    todos.forEach((task,index) => {
-        console.log(`${index+1}. ${task}`)
-    })
+    todos.forEach((task, index) => {
+      console.log(`${index + 1}. ${task}`);
+    });
     showMenu();
-  } else if(option === "3") {
+  } else if (option === "3") {
     console.log(`Good Byee`);
     rl.close();
   } else {
     console.log("Invalid option . Please Try Again");
     showMenu();
-
   }
 };
 
-showMenu();
+showMenu(); 
