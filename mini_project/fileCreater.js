@@ -7,7 +7,7 @@ const rl = readline.createInterface({
 });
 
 const fileCreation = () => {
-  rl.question(`Enter Your File Name :`,(filename) => {
+  rl.question(`Enter Your File Name :`, (filename) => {
     rl.question("Enter the content for Your File: ", (content) => {
       fs.writeFile(`${filename}.txt`, content, (err) => {
         if (err) {
@@ -15,6 +15,7 @@ const fileCreation = () => {
         } else {
           console.log(`File "${filename}.txt" created Successfully!`);
         }
+
         rl.close();
       });
     });
