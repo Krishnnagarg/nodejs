@@ -1,6 +1,6 @@
 import https from 'https';
 import readline from "readline";
-import chalk from "chalk";
+import chalk from "chalk";  
 
 const rl = readline.createInterface({
     input:process.stdin,//used for read 
@@ -11,7 +11,7 @@ const apiKey = `574e72139bea2b1ad69a43ef`;
 const url = `https://v6.exchangerate-api.com/v6/574e72139bea2b1ad69a43ef/latest/USD` ;
 
 const convertCurrency = (amount,rate) => {
-    return (amount * rate).toFixed(2)
+    return (amount * rate).toFixed(2)   
 }
 
 https.get(url , (response) =>{
