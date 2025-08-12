@@ -11,8 +11,6 @@ body {
     align-items: center;
     min-height: 100vh;
 }
-
-/* Main container */
 .container {
     background: #fff;
     padding: 2rem;
@@ -24,15 +22,12 @@ body {
     flex-direction: column;
     align-items: center;
 }
-
-/* Heading styles */
 h1 {
     text-align: center;
     margin-bottom: 1.5rem;
     color: #0077b6;
 }
 
-/* Form styles */
 form {
     width: 100%;
 }
@@ -64,7 +59,6 @@ input:focus {
     box-shadow: 0px 0px 8px rgba(0, 119, 182, 0.4), inset 0px 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-/* Button styles */
 button {
     width: 100%;
     padding: 0.7rem;
@@ -83,7 +77,6 @@ button:hover {
     transform: translateY(-2px);
 }
 
-/* Shortened URLs section */
 h2 {
     margin-top: 2rem;
     color: #023e8a;
