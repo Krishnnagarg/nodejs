@@ -1,0 +1,5 @@
+GET /users → List all Users
+GET /users/1 → Get the user with id 1
+POST /users → Naya user create karega
+PUT /users/1 → ID 1 wale user ka data replace karega
+DELETE /users/1 → ID 1 wale user ko delete karega
