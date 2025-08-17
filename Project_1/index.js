@@ -1,7 +1,20 @@
 import express from "express";
+import fs from "fs";
 import users from "./MOCK_DATA.json" assert { type: "json" };
 
 const app = express();
+//Middleware
+app.use(express.urlencoded({ extended: false }));
+
+app.use((req, res, next) => {
+  console.log("Hello from middleware 1");
+  next();
+});
+
+app.use((req, res, next) => {
+  console.log("Hello from middleware 2");
+  next();
+});
 
 app.get("/users", (req, res) => {
   const html = `
@@ -15,7 +28,9 @@ app.get("/users", (req, res) => {
 //Rest API
 
 app.get("/api/users", (req, res) => {
-  return res.json(users); //res.json json is used because we work with json
+  res.setHeader("X-myName","KrishnaGarg");//custom header
+  //Always add x to custom header 
+  return res.json(users);  //res.json json is used because we work with json
 });
 
 app
@@ -23,23 +38,44 @@ app
   .get((req, res) => {
     const id = Number(req.params.id); //firstly id get
     const user = users.find((user) => user.id === id);
+    if(!user) return res.status(404).json({error:"user not found"})
     return res.json(user);
   })
   .patch((req, res) => {
-    //edit the user with id
+    // kisi existing user ki details update karna.
     return res.json({ status: "pending" });
   })
   .delete((req, res) => {
-    //delete the user with id
-    return res.json({ status: "pending" });
+    const id = Number(req.params.id);
+    const newUsers = users.filter((user) => user.id !== id); // us id wale user ko hata diya
+
+    fs.writeFile("./MOCK_DATA.json", JSON.stringify(newUsers), (err) => {
+      if (err) {
+        return res
+          .status(500)
+          .json({ status: "Error", message: "File write failed" });
+      }
+      return res.json({
+        status: "Success",
+        message: `User with id ${id} deleted`,
+      });
+    });
   });
 
 app.post("/api/users", (req, res) => {
-  //create new user
-  return res.json({ status: "pending" });
+  //create new user data
+  const body = req.body;
+  if(!body || !body.first_name || !body.last_name || !body.email || !body.job_title || !body.gender) {
+    return res.status(400).json({mag:"All body req...."})
+  } 
+  users.push({ ...body, id: users.length + 1 });
+  fs.writeFile("./MOCK_DATA.json", JSON.stringify(users), (err, data) => {
+    return res.status(201).json({ msg: "Success", id: users.length });
+  });
 });
 
 const PORT = 8000;
+
 app.listen(PORT, () => {
   console.log(`Server started at localhost:${PORT}`);
 });
