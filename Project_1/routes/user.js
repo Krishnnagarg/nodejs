@@ -5,11 +5,12 @@ import {
   handleGetAllUsers,
   handleGetUserById,
   handleUpdateUserById,
-} from "../controllers/user";
+} from "../controllers/user.js";
 
 const router = express.Router();
 
-router.route("/").get(handleGetAllUsers).post("/", handleCreateNewUser);
+//this function in Controllers Folder
+router.route("/").get(handleGetAllUsers).post(handleCreateNewUser);
 
 router
   .route("/:id")
