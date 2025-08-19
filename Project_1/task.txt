@@ -1,5 +1,20 @@
-GET /users → List all Users
-GET /users/1 → Get the user with id 1
-POST /users → Naya user create karega
-PUT /users/1 → ID 1 wale user ka data replace karega
-DELETE /users/1 → ID 1 wale user ko delete karega
+
+
+1. GET /users -> HTML Document Render
+2. GET /api/users -> List all Users as json 
+
+3. GET /api/users/:id -> Get the user with id 1
+
+dynamic path variable ==>
+GET /api/users/:id
+:id -> variable |Dynamic
+
+Brower by default get req 
+
+4. POST /api/users -> Naya user create karega
+
+5. Patch /api/users/:id -> ID 1 wale user ka data replace karega
+
+6. DELETE /api/users/:id -> ID 1 wale user ko delete karega
+
+7. PUT /api/users/:id -> update existing data
